@@ -1,0 +1,87 @@
+#define init
+global.sprTrident = sprite_add_weapon("Trident.png", -2, 2);
+#define weapon_name
+return "TRIDENT";
+#define weapon_type
+return 0;
+#define weapon_auto
+return 0;
+#define weapon_cost
+return 0;
+#define weapon_load
+return 22;
+#define weapon_sprt
+return global.sprTrident;
+#define weapon_area
+return 12;
+#define weapon_swap
+return sndSwapHammer;
+#define weapon_text
+return "Rip NTU";
+#define weapon_fire
+var __angle = gunangle;
+sound_play(sndHammer);
+instance_create(x, y, Dust);
+with instance_create(x,y,Shank){
+	motion_add(other.gunangle,2)
+	damage = 5
+	team = other.team
+	creator = other
+	canfix = 0
+	image_speed *= 0.8
+	image_angle = direction
+	image_xscale = 2
+	image_yscale = 1
+}
+with instance_create(x+lengthdir_x(75,__angle)+lengthdir_y(25, __angle),y+lengthdir_y(75, __angle)-lengthdir_x(25,__angle),Shank){
+	motion_add(other.gunangle,2)
+	damage = 5
+	team = other.team
+	creator = other
+	canfix = 0
+	image_speed *= 0.8
+	image_angle = direction
+	image_xscale = 0.2
+	image_yscale = 4
+}
+with instance_create(x+lengthdir_x(75,__angle)-lengthdir_y(25, __angle),y+lengthdir_y(75, __angle)+lengthdir_x(25,__angle),Shank){
+	motion_add(other.gunangle,2)
+	damage = 5
+	team = other.team
+	creator = other
+	canfix = 0
+	image_speed *= 0.8
+	image_angle = direction
+	image_xscale = 0.2
+	image_yscale = 4
+}
+with instance_create(x+lengthdir_x(75,__angle),y+lengthdir_y(75,__angle),Shank){
+	motion_add(other.gunangle,2)
+	damage = 5
+	team = other.team
+	creator = other
+	canfix = 0
+	image_speed *= 0.8
+	image_angle = direction
+}
+with instance_create(x+lengthdir_x(65,__angle)+lengthdir_y(40, __angle),y+lengthdir_y(65, __angle)-lengthdir_x(40,__angle),Shank){
+	motion_add(other.gunangle,2)
+	damage = 5
+	team = other.team
+	creator = other
+	canfix = 0
+	image_speed *= 0.8
+	image_angle = direction
+}
+with instance_create(x+lengthdir_x(65,__angle)-lengthdir_y(40, __angle),y+lengthdir_y(65, __angle)+lengthdir_x(40,__angle),Shank){
+	motion_add(other.gunangle,2)
+	damage = 5
+	team = other.team
+	creator = other
+	canfix = 0
+	image_speed *= 0.8
+	image_angle = direction
+}
+wepangle = -wepangle;
+motion_add(__angle, 6);
+weapon_post(-4, 12, 1);

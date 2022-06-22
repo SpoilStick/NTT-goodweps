@@ -1,0 +1,18 @@
+/loadmod My Good Wep Tools.mod.gml
+/loadmod More Chests.mod
+/loadmod Lightning Flak Cannon.wep
+/loadmod Super Lightning Flak Cannon.wep
+/loadwep Lightning Shot Cannon.wep
+/loadwep Lightning Explo Rifle.wep
+/loadwep Bouncer Cannon.wep
+/loadwep Super Bouncer Cannon.wep
+/loadwep Large Blood Rifle.wep
+/loadwep Super Ultra Shotgun.wep
+/loadwep Trident.wep
+/loadwep Lightning Trident.wep
+/loadwep Flame Flak Cannon.wep
+/loadwep Super Flame Flak Cannon.wep
+/loadwep Flame Sniper.wep
+/loadwep Ultra Flame Sniper.wep
+/loadwep Flame Ball Flak Cannon.wep
+/loadwep Ultra Grenade Flak Cannon.wep

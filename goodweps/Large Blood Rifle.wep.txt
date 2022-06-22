@@ -1,0 +1,42 @@
+#define init
+global.sprLargeBloodRifle = sprite_add_weapon("Large Blood Rifle.png", -2, 2);
+#define weapon_name
+return "LARGE BLOOD RIFLE";
+#define weapon_type
+return 4;
+#define weapon_auto
+return 0;
+#define weapon_cost
+return 6;
+#define weapon_load
+return 26;
+#define weapon_sprt
+return global.sprLargeBloodRifle;
+#define weapon_area
+return 12;
+#define weapon_swap
+return sndSwapExplosive;
+#define weapon_text
+return "Blood/Bleed Confused Again";
+#define weapon_fire
+var __angle = gunangle;
+sound_play(sndFlakCannon);
+repeat(25)
+{
+	wait (0.5 + random(1)) 
+	{
+		{
+			with instance_create(mouse_x[index]+random_range(-150,150),mouse_y[index]+random_range(-150,150),BloodGrenade)
+			{
+				var scale = random_range(1,1.3);
+				image_xscale = scale
+				image_yscale = scale
+				image_speed = scale/5
+				creator = other
+				team = other.team
+				damage = 35
+			}
+		}
+	}
+}
+weapon_post(7, -32, 4);

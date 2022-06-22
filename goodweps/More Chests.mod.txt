@@ -1,0 +1,5 @@
+#define step
+with (WeaponChest) {
+	instance_change(GiantWeaponChest, false);
+	instance_create(x,y,PortalClear);
+}

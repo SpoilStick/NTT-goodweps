@@ -1,0 +1,30 @@
+#define init
+global.sprSuperFlameFlakCannon = sprite_add_weapon("Super Flame Flak Cannon.png", -2, 2);
+#define weapon_name
+return "SUPER FLAME FLAK CANNON";
+#define weapon_type
+return 5;
+#define weapon_auto
+return 0;
+#define weapon_cost
+return 8;
+#define weapon_load
+return 64;
+#define weapon_sprt
+return global.sprSuperFlameFlakCannon;
+#define weapon_area
+return 14;
+#define weapon_swap
+return sndSwapExplosive;
+#define weapon_text
+return "20/20 I See Fire Again";
+#define weapon_fire
+var __angle = gunangle;
+sound_play(sndFlakCannon);
+mod_script_call("mod", "My Good Wep Tools", "create_super_flame_flak_bullet") {
+	motion_add(__angle + (random(10) - 5) * other.accuracy, 11 + random(2));
+	image_angle = direction;
+	team = other.team;
+	creator = other;
+}
+weapon_post(8, -32, 14);

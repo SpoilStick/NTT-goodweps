@@ -1,0 +1,30 @@
+#define init
+global.sprFlameSniper = sprite_add_weapon("Flame Sniper.png", -2, 2);
+#define weapon_name
+return "FLAME SNIPER";
+#define weapon_sprt
+return global.sprFlameSniper;
+#define weapon_type
+return 4;
+#define weapon_auto
+return false;
+#define weapon_load
+return 20;
+#define weapon_cost
+return 10;
+#define weapon_swap
+return sndSwapPistol;
+#define weapon_area
+return 20;
+#define weapon_text
+return "DIS-ASTRAL DESTRUCTION";
+#define weapon_fire
+sound_play(sndFlameCannon)
+var __angle = gunangle;
+with instance_create(Player.x+lengthdir_x(sprite_height-6,point_direction(Player.x,Player.y,mouse_x,mouse_y)),Player.y+lengthdir_y(sprite_height-6,point_direction(Player.x,Player.y,mouse_x,mouse_y)),FlameBall)
+{
+	motion_add(__angle + random(20)-10,7+random(2))
+	image_angle = direction
+	team = other.team
+}
+wkick = 3

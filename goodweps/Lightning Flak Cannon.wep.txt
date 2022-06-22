@@ -1,0 +1,30 @@
+#define init
+global.sprLightningFlakCannon = sprite_add_weapon("Lightning Flak Cannon.png", -2, 2);
+#define weapon_name
+return "LIGHTNING FLAK CANNON";
+#define weapon_type
+return 5;
+#define weapon_auto
+return 0;
+#define weapon_cost
+return 2;
+#define weapon_load
+return 26;
+#define weapon_sprt
+return global.sprLightningFlakCannon;
+#define weapon_area
+return 12;
+#define weapon_swap
+return sndSwapExplosive;
+#define weapon_text
+return "10/10 Must Use Again";
+#define weapon_fire
+var __angle = gunangle;
+sound_play(sndFlakCannon);
+mod_script_call("mod", "My Good Wep Tools", "create_lightning_flak_bullet") {
+	motion_add(__angle + (random(10) - 5) * other.accuracy, 11 + random(2));
+	image_angle = direction;
+	team = other.team;
+	creator = other;
+}
+weapon_post(7, -32, 4);

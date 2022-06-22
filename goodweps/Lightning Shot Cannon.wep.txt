@@ -1,0 +1,30 @@
+#define init
+global.sprLightningShotCannon = sprite_add_weapon("Lightning Shot Cannon.png", -2, 2);
+#define weapon_name
+return "LIGHTNING SHOT CANNON";
+#define weapon_type
+return 5;
+#define weapon_auto
+return 0;
+#define weapon_cost
+return 16;
+#define weapon_load
+return 128;
+#define weapon_sprt
+return global.sprLightningShotCannon;
+#define weapon_area
+return 14;
+#define weapon_swap
+return sndSwapExplosive;
+#define weapon_text
+return "30/30 I Meme Again";
+#define weapon_fire
+var __angle = gunangle;
+sound_play(sndFlakCannon);
+mod_script_call("mod", "My Good Wep Tools", "create_lightning_shot_cannon") {
+	motion_add(__angle + (random(10) - 5) * other.accuracy, 11 + random(2));
+	image_angle = direction;
+	team = other.team;
+	creator = other;
+}
+weapon_post(8, -32, 14);

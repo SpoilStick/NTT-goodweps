@@ -1,0 +1,42 @@
+#define init
+global.sprSuperUltraShotgun = sprite_add_weapon("Super Ultra Shotgun.png", -2, 2);
+#define weapon_name
+return "SUPER ULTRA SHOTGUN";
+#define weapon_type
+return 2;
+#define weapon_auto
+return 0;
+#define weapon_cost
+return 2;
+#define weapon_load
+return 10;
+#define weapon_sprt
+return global.sprSuperUltraShotgun;
+#define weapon_area
+return 20;
+#define weapon_swap
+return sndSwapShotgun;
+#define weapon_text
+return "super radiculous";
+#define weapon_fire
+if GameCont.rad >= 5{
+	GameCont.rad -= 5
+	var __angle = gunangle;
+	sound_play(sndUltraShotgun);
+	repeat (27) {
+		with instance_create(x,y,UltraShell) {
+			motion_add(__angle + (random(60) - 30) * other.accuracy, 10 + random(10));
+			image_angle = direction;
+			team = other.team;
+			creator = other;
+		}
+	}
+}
+else{
+	sound_play(sndUltraEmpty)
+	ammo[2] += 10
+	with instance_create(x,y,PopupText){
+		mytext = "NOT ENOUGH RADS"
+	}
+}
+weapon_post(7, -13, 9);

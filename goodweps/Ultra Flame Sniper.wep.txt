@@ -1,0 +1,43 @@
+#define init
+global.sprUltraFlameSniper = sprite_add_weapon("Ultra Flame Sniper.png", -2, 2);
+#define weapon_name
+return "ULTRA FLAME SNIPER";
+#define weapon_sprt
+return global.sprUltraFlameSniper;
+#define weapon_type
+return 4;
+#define weapon_auto
+return false;
+#define weapon_load
+return 25;
+#define weapon_cost
+return 10;
+#define weapon_swap
+return sndSwapPistol;
+#define weapon_area
+return 20;
+#define weapon_text
+return "ULTRA DIS-ASTRAL FIERY DESTRUCTION";
+#define weapon_fire
+sound_play(sndFlameCannon)
+var __angle = gunangle;
+if GameCont.rad >= 5{
+	GameCont.rad -= 5
+	repeat(3)
+	with instance_create(Player.x+lengthdir_x(sprite_height-6,point_direction(Player.x,Player.y,mouse_x,mouse_y)),Player.y+lengthdir_y(sprite_height-6,point_direction(Player.x,Player.y,mouse_x,mouse_y)),FlameBall)
+	{
+		image_blend = c_lime
+		motion_add(__angle + random(25)-12.5,6+random(8))
+		image_angle = direction
+		team = other.team
+		damage = 40
+	}
+}
+else{
+	sound_play(sndUltraEmpty)
+	ammo[2] += 10
+	with instance_create(x,y,PopupText){
+		mytext = "NOT ENOUGH RADS"
+	}
+}
+wkick = 3
